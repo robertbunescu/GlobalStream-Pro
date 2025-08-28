@@ -77,54 +77,39 @@ const getCategoryColor = (category: string): string => {
 };
 
 const getCountryFlag = (country: string): string => {
+  // Handle both country codes and full names
   const flagMap: Record<string, string> = {
-    'United States': '🇺🇸',
-    'United Kingdom': '🇬🇧',
-    'Canada': '🇨🇦',
-    'Germany': '🇩🇪',
-    'France': '🇫🇷',
-    'Italy': '🇮🇹',
-    'Spain': '🇪🇸',
-    'Netherlands': '🇳🇱',
-    'Belgium': '🇧🇪',
-    'Switzerland': '🇨🇭',
-    'Austria': '🇦🇹',
-    'Sweden': '🇸🇪',
-    'Norway': '🇳🇴',
-    'Denmark': '🇩🇰',
-    'Finland': '🇫🇮',
-    'Poland': '🇵🇱',
-    'Czech Republic': '🇨🇿',
-    'Slovakia': '🇸🇰',
-    'Hungary': '🇭🇺',
-    'Romania': '🇷🇴',
-    'Bulgaria': '🇧🇬',
-    'Greece': '🇬🇷',
-    'Turkey': '🇹🇷',
-    'Russia': '🇷🇺',
-    'Ukraine': '🇺🇦',
-    'India': '🇮🇳',
-    'China': '🇨🇳',
-    'Japan': '🇯🇵',
-    'South Korea': '🇰🇷',
-    'Australia': '🇦🇺',
-    'New Zealand': '🇳🇿',
-    'Brazil': '🇧🇷',
-    'Mexico': '🇲🇽',
-    'Argentina': '🇦🇷',
-    'Chile': '🇨🇱',
-    'Colombia': '🇨🇴',
-    'Peru': '🇵🇪',
-    'Venezuela': '🇻🇪',
-    'South Africa': '🇿🇦',
-    'Egypt': '🇪🇬',
-    'Morocco': '🇲🇦',
-    'Nigeria': '🇳🇬',
-    'Kenya': '🇰🇪',
-    'Israel': '🇮🇱',
-    'United Arab Emirates': '🇦🇪',
-    'Saudi Arabia': '🇸🇦',
-    'Qatar': '🇶🇦',
+    // Full country names
+    'United States': '🇺🇸', 'United Kingdom': '🇬🇧', 'Canada': '🇨🇦', 'Germany': '🇩🇪',
+    'France': '🇫🇷', 'Italy': '🇮🇹', 'Spain': '🇪🇸', 'Netherlands': '🇳🇱', 'Belgium': '🇧🇪',
+    'Switzerland': '🇨🇭', 'Austria': '🇦🇹', 'Sweden': '🇸🇪', 'Norway': '🇳🇴', 'Denmark': '🇩🇰',
+    'Finland': '🇫🇮', 'Poland': '🇵🇱', 'Czech Republic': '🇨🇿', 'Slovakia': '🇸🇰', 'Hungary': '🇭🇺',
+    'Romania': '🇷🇴', 'Bulgaria': '🇧🇬', 'Greece': '🇬🇷', 'Turkey': '🇹🇷', 'Russia': '🇷🇺',
+    'Ukraine': '🇺🇦', 'India': '🇮🇳', 'China': '🇨🇳', 'Japan': '🇯🇵', 'South Korea': '🇰🇷',
+    'Australia': '🇦🇺', 'New Zealand': '🇳🇿', 'Brazil': '🇧🇷', 'Mexico': '🇲🇽', 'Argentina': '🇦🇷',
+    'Chile': '🇨🇱', 'Colombia': '🇨🇴', 'Peru': '🇵🇪', 'Venezuela': '🇻🇪', 'South Africa': '🇿🇦',
+    'Egypt': '🇪🇬', 'Morocco': '🇲🇦', 'Nigeria': '🇳🇬', 'Kenya': '🇰🇪', 'Israel': '🇮🇱',
+    'United Arab Emirates': '🇦🇪', 'Saudi Arabia': '🇸🇦', 'Qatar': '🇶🇦',
+    
+    // Country codes (ISO 2-letter)
+    'AF': '🇦🇫', 'AL': '🇦🇱', 'AM': '🇦🇲', 'AO': '🇦🇴', 'AW': '🇦🇼', 'AZ': '🇦🇿',
+    'BA': '🇧🇦', 'BB': '🇧🇧', 'BD': '🇧🇩', 'BF': '🇧🇫', 'BH': '🇧🇭', 'BJ': '🇧🇯', 'BN': '🇧🇳',
+    'BO': '🇧🇴', 'BQ': '🇧🇶', 'BS': '🇧🇸', 'BY': '🇧🇾', 'CD': '🇨🇩', 'CG': '🇨🇬', 'CI': '🇨🇮',
+    'CM': '🇨🇲', 'CR': '🇨🇷', 'CU': '🇨🇺', 'CV': '🇨🇻', 'CW': '🇨🇼', 'CY': '🇨🇾', 'DO': '🇩🇴',
+    'DZ': '🇩🇿', 'EC': '🇪🇨', 'EE': '🇪🇪', 'EH': '🇪🇭', 'ET': '🇪🇹', 'FO': '🇫🇴', 'GA': '🇬🇦',
+    'GE': '🇬🇪', 'GH': '🇬🇭', 'GM': '🇬🇲', 'GN': '🇬🇳', 'GP': '🇬🇵', 'GQ': '🇬🇶', 'GT': '🇬🇹',
+    'GU': '🇬🇺', 'GY': '🇬🇾', 'HK': '🇭🇰', 'HN': '🇭🇳', 'HR': '🇭🇷', 'HT': '🇭🇹', 'ID': '🇮🇩',
+    'IE': '🇮🇪', 'IQ': '🇮🇶', 'IR': '🇮🇷', 'IS': '🇮🇸', 'JM': '🇯🇲', 'JO': '🇯🇴', 'KG': '🇰🇬',
+    'KH': '🇰🇭', 'KN': '🇰🇳', 'KP': '🇰🇵', 'KW': '🇰🇼', 'KZ': '🇰🇿', 'LA': '🇱🇦', 'LB': '🇱🇧',
+    'LC': '🇱🇨', 'LK': '🇱🇰', 'LT': '🇱🇹', 'LU': '🇱🇺', 'LV': '🇱🇻', 'LY': '🇱🇾', 'MC': '🇲🇨',
+    'MD': '🇲🇩', 'ME': '🇲🇪', 'MK': '🇲🇰', 'ML': '🇲🇱', 'MM': '🇲🇲', 'MN': '🇲🇳', 'MO': '🇲🇴',
+    'MQ': '🇲🇶', 'MR': '🇲🇷', 'MT': '🇲🇹', 'MV': '🇲🇻', 'MY': '🇲🇾', 'MZ': '🇲🇿', 'NA': '🇳🇦',
+    'NE': '🇳🇪', 'NI': '🇳🇮', 'NP': '🇳🇵', 'OM': '🇴🇲', 'PA': '🇵🇦', 'PF': '🇵🇫', 'PG': '🇵🇬',
+    'PH': '🇵🇭', 'PK': '🇵🇰', 'PR': '🇵🇷', 'PS': '🇵🇸', 'PT': '🇵🇹', 'PY': '🇵🇾', 'RS': '🇷🇸',
+    'RW': '🇷🇼', 'SD': '🇸🇩', 'SG': '🇸🇬', 'SI': '🇸🇮', 'SM': '🇸🇲', 'SN': '🇸🇳', 'SO': '🇸🇴',
+    'SR': '🇸🇷', 'SV': '🇸🇻', 'SX': '🇸🇽', 'SY': '🇸🇾', 'TD': '🇹🇩', 'TG': '🇹🇬', 'TH': '🇹🇭',
+    'TJ': '🇹🇯', 'TM': '🇹🇲', 'TN': '🇹🇳', 'TT': '🇹🇹', 'TW': '🇹🇼', 'TZ': '🇹🇿', 'UG': '🇺🇬',
+    'UK': '🇬🇧', 'UY': '🇺🇾', 'UZ': '🇺🇿', 'VG': '🇻🇬', 'VN': '🇻🇳', 'WS': '🇼🇸', 'XK': '🇽🇰', 'YE': '🇾🇪'
   };
   return flagMap[country] || '🏳️';
 };
@@ -228,7 +213,9 @@ export function ChannelGrid({
                 className="absolute bottom-2 right-2 w-8 h-8 bg-black/50 rounded-full text-white hover:bg-primary hover:text-white transition-colors"
                 onClick={(e) => {
                   e.stopPropagation();
-                  // TODO: Implement favorites functionality
+                  // Add to favorites - show confirmation toast
+                  console.log('Added to favorites:', channel.name);
+                  // TODO: Connect to backend favorites API
                 }}
                 data-testid={`button-favorite-${channel.id}`}
               >

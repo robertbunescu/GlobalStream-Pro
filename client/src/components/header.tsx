@@ -70,11 +70,27 @@ export function Header({ onSearch, onMenuToggle }: HeaderProps) {
               />
             </div>
             
-            <Button variant="ghost" size="icon" data-testid="button-favorites">
+            <Button 
+              variant="ghost" 
+              size="icon" 
+              onClick={() => {
+                console.log('Opening favorites page...');
+                // TODO: Navigate to favorites page or show favorites sidebar
+              }}
+              data-testid="button-favorites"
+            >
               <Heart className="h-5 w-5 text-muted-foreground hover:text-primary" />
             </Button>
             
-            <Button variant="ghost" size="icon" data-testid="button-settings">
+            <Button 
+              variant="ghost" 
+              size="icon"
+              onClick={() => {
+                console.log('Opening settings...');
+                // TODO: Open settings dialog or navigate to settings page
+              }}
+              data-testid="button-settings"
+            >
               <Settings className="h-5 w-5 text-muted-foreground hover:text-primary" />
             </Button>
           </div>
