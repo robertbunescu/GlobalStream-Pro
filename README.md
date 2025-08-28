@@ -18,17 +18,14 @@ O aplicație modernă de streaming TV care îți permite să vizionezi canale li
 
 ## 🖼️ Preview-uri
 
-### Desktop Interface
-![Desktop Interface](./attached_assets/generated_images/Desktop_interface_screenshot_de552309.png)
+### Interface Desktop Principal
+![Desktop Interface](./attached_assets/generated_images/Real_GlobalTV_application_interface_6a58eedb.png)
 
-### Mobile Interface
-![Mobile Interface](./attached_assets/generated_images/Mobile_app_interface_mockup_27a48446.png)
+### Interface Mobile Responsivă
+![Mobile Interface](./attached_assets/generated_images/Mobile_GlobalTV_interface_screenshot_7c64e522.png)
 
-### Features Overview
-![Features Showcase](./attached_assets/generated_images/Features_showcase_collage_3a92a4e6.png)
-
-### Figma Design Process
-![Figma Mockup](./attached_assets/generated_images/Figma_design_mockup_b2c6534a.png)
+### Video Player Integrat
+![Video Player](./attached_assets/generated_images/GlobalTV_video_player_interface_3bed55a0.png)
 
 ## 🚀 Tehnologii folosite
 

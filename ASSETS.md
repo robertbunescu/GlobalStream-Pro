@@ -4,18 +4,15 @@ Toate imaginile și materialele grafice create pentru proiectul GlobalTV:
 
 ## 🎨 Imagini principale
 
-### Logo și Branding
+### Interface-uri reale din aplicația GlobalTV
+- **Interface Desktop Principal**: `./attached_assets/generated_images/Real_GlobalTV_application_interface_6a58eedb.png`
+- **Interface Mobile Responsivă**: `./attached_assets/generated_images/Mobile_GlobalTV_interface_screenshot_7c64e522.png`
+- **Video Player Integrat**: `./attached_assets/generated_images/GlobalTV_video_player_interface_3bed55a0.png`
+- **GitHub Banner Autentic**: `./attached_assets/generated_images/GitHub_banner_with_real_interface_3a238ecf.png`
+
+### Logo și Branding (versiuni anterioare)
 - **Logo GlobalTV**: `./attached_assets/generated_images/GlobalTV_logo_design_a60d0fe4.png`
-- **Hero Banner**: `./attached_assets/generated_images/GlobalTV_hero_banner_mockup_71b62d77.png` 
-- **GitHub Repository Banner**: `./attached_assets/generated_images/GitHub_repository_banner_c46794c1.png`
-
-### Interface Mockups
-- **Desktop Interface**: `./attached_assets/generated_images/Desktop_interface_screenshot_de552309.png`
-- **Mobile App Interface**: `./attached_assets/generated_images/Mobile_app_interface_mockup_27a48446.png`
-- **Features Showcase**: `./attached_assets/generated_images/Features_showcase_collage_3a92a4e6.png`
-
-### Design Process
-- **Figma Design Mockup**: `./attached_assets/generated_images/Figma_design_mockup_b2c6534a.png`
+- **Hero Banner**: `./attached_assets/generated_images/GlobalTV_hero_banner_mockup_71b62d77.png`
 
 ## 📱 Cum să folosești imaginile
 
