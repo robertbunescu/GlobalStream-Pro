@@ -30,25 +30,17 @@ export function Header({ onSearch, onMenuToggle }: HeaderProps) {
             
             {/* Navigation */}
             <nav className="hidden md:flex space-x-6">
-              <Link href="/">
-                <a className="text-foreground hover:text-primary transition-colors font-medium" data-testid="nav-home">
-                  Home
-                </a>
+              <Link href="/" className="text-foreground hover:text-primary transition-colors font-medium" data-testid="nav-home">
+                Home
               </Link>
-              <Link href="/live">
-                <a className="text-muted-foreground hover:text-primary transition-colors" data-testid="nav-live">
-                  Live TV
-                </a>
+              <Link href="/" className="text-muted-foreground hover:text-primary transition-colors" data-testid="nav-live">
+                Live TV
               </Link>
-              <Link href="/categories">
-                <a className="text-muted-foreground hover:text-primary transition-colors" data-testid="nav-categories">
-                  Categories
-                </a>
+              <Link href="/" className="text-muted-foreground hover:text-primary transition-colors" data-testid="nav-categories">
+                Categories
               </Link>
-              <Link href="/favorites">
-                <a className="text-muted-foreground hover:text-primary transition-colors" data-testid="nav-favorites">
-                  Favorites
-                </a>
+              <Link href="/" className="text-muted-foreground hover:text-primary transition-colors" data-testid="nav-favorites">
+                Favorites
               </Link>
             </nav>
           </div>

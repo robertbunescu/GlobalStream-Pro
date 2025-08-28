@@ -22,11 +22,20 @@ export function VideoPlayer({ channel, onClose }: VideoPlayerProps) {
   useEffect(() => {
     if (!videoRef.current || !channel.url) return;
 
+    let timeoutId: NodeJS.Timeout;
+    let cleanupListeners: (() => void) | undefined;
+
     const initPlayer = async () => {
       try {
         setIsLoading(true);
         setError(null);
         
+        // Set timeout for loading (15 seconds)
+        timeoutId = setTimeout(() => {
+          setError('Stream took too long to load. Channel might be offline.');
+          setIsLoading(false);
+        }, 15000);
+
         // First try direct stream
         if (videoRef.current) {
           // Check if it's a direct video URL
@@ -54,34 +63,52 @@ export function VideoPlayer({ channel, onClose }: VideoPlayerProps) {
           }
           
           // Add event listeners with better error handling
-          const handleLoadStart = () => setIsLoading(true);
+          const handleLoadStart = () => {
+            setIsLoading(true);
+            setError(null);
+          };
           const handleLoadedData = () => {
             setIsLoading(false);
             setError(null);
+            clearTimeout(timeoutId);
+          };
+          const handleCanPlay = () => {
+            setIsLoading(false);
+            setError(null);
+            clearTimeout(timeoutId);
           };
           const handleError = async (e: Event) => {
             console.error('Video error:', e);
+            clearTimeout(timeoutId);
             // Try fallback through proxy if direct failed
             if (videoRef.current && !videoRef.current.src.includes('/api/proxy/stream')) {
               console.log('Trying proxy fallback...');
+              setError(null);
+              setIsLoading(true);
               const proxyUrl = `/api/proxy/stream?url=${encodeURIComponent(channel.url)}`;
               videoRef.current.src = proxyUrl;
+              // Set new timeout for proxy attempt
+              timeoutId = setTimeout(() => {
+                setError('Stream unavailable. Channel might be offline or geo-blocked.');
+                setIsLoading(false);
+              }, 10000);
             } else {
-              setError('Stream format not compatible');
+              setError('Stream unavailable. Channel might be offline or geo-blocked.');
               setIsLoading(false);
             }
           };
           
           videoRef.current.addEventListener('loadstart', handleLoadStart);
           videoRef.current.addEventListener('loadeddata', handleLoadedData);
+          videoRef.current.addEventListener('canplay', handleCanPlay);
           videoRef.current.addEventListener('error', handleError);
-          videoRef.current.addEventListener('canplay', () => setIsLoading(false));
           
           // Clean up listeners
-          return () => {
+          cleanupListeners = () => {
             if (videoRef.current) {
               videoRef.current.removeEventListener('loadstart', handleLoadStart);
               videoRef.current.removeEventListener('loadeddata', handleLoadedData);
+              videoRef.current.removeEventListener('canplay', handleCanPlay);
               videoRef.current.removeEventListener('error', handleError);
             }
           };
@@ -91,12 +118,17 @@ export function VideoPlayer({ channel, onClose }: VideoPlayerProps) {
         console.error('Error loading stream:', err);
         setError('Stream not available - format may not be supported');
         setIsLoading(false);
+        clearTimeout(timeoutId);
       }
     };
 
     initPlayer();
 
     return () => {
+      clearTimeout(timeoutId);
+      if (cleanupListeners) {
+        cleanupListeners();
+      }
       if (playerRef.current) {
         playerRef.current.destroy();
       }
@@ -175,7 +207,15 @@ export function VideoPlayer({ channel, onClose }: VideoPlayerProps) {
                       <X className="text-red-400 text-xl" />
                     </div>
                     <h3 className="text-lg font-medium text-white">Stream Error</h3>
-                    <p className="text-gray-400 text-sm">{error}</p>
+                    <p className="text-gray-400 text-sm mb-4">{error}</p>
+                    <Button 
+                      onClick={() => window.location.reload()} 
+                      variant="outline" 
+                      size="sm"
+                      className="text-white border-white/20 hover:bg-white/10"
+                    >
+                      Try Again
+                    </Button>
                   </>
                 ) : (
                   <>

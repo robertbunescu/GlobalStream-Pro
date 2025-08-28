@@ -70,6 +70,10 @@ export default function Home() {
 
   const handleSearch = (query: string) => {
     setSearchQuery(query);
+    // Close video player when searching
+    if (selectedChannel) {
+      setSelectedChannel(null);
+    }
   };
 
   const handleMenuToggle = () => {
@@ -85,8 +89,20 @@ export default function Home() {
           isCollapsed={isSidebarCollapsed}
           selectedCategory={selectedCategory}
           selectedCountry={selectedCountry}
-          onCategorySelect={setSelectedCategory}
-          onCountrySelect={setSelectedCountry}
+          onCategorySelect={(category) => {
+            setSelectedCategory(category);
+            // Close video player when changing category
+            if (selectedChannel) {
+              setSelectedChannel(null);
+            }
+          }}
+          onCountrySelect={(country) => {
+            setSelectedCountry(country);
+            // Close video player when changing country  
+            if (selectedChannel) {
+              setSelectedChannel(null);
+            }
+          }}
         />
 
         <main className="flex-1 min-h-screen">
@@ -115,7 +131,14 @@ export default function Home() {
               
               <div className="flex items-center space-x-4">
                 {/* Category Filter */}
-                <Select value={selectedCategory || "all"} onValueChange={(value) => setSelectedCategory(value === "all" ? null : value)}>
+                <Select value={selectedCategory || "all"} onValueChange={(value) => {
+                  const newCategory = value === "all" ? null : value;
+                  setSelectedCategory(newCategory);
+                  // Close video player when changing category
+                  if (selectedChannel) {
+                    setSelectedChannel(null);
+                  }
+                }}>
                   <SelectTrigger className="w-48" data-testid="select-category">
                     <SelectValue placeholder="All Categories" />
                   </SelectTrigger>
