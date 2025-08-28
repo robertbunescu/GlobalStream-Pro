@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useQuery } from "@tanstack/react-query";
 import { Heart, Play } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -148,6 +148,11 @@ export function ChannelGrid({
     }],
     enabled: true,
   });
+
+  // Reset page when filters change
+  useEffect(() => {
+    setCurrentPage(0);
+  }, [selectedCategory, selectedCountry, searchQuery]);
 
   const loadMore = () => {
     setCurrentPage(prev => prev + 1);
