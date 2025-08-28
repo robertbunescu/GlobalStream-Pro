@@ -52,7 +52,7 @@ export class VideoPlayer {
     
     this.video = videoElement;
 
-    // Check if HLS is natively supported
+    // Check if HLS is natively supported (Safari, some mobile browsers)
     if (videoElement.canPlayType('application/vnd.apple.mpegurl')) {
       videoElement.src = streamUrl;
       return;
@@ -60,7 +60,19 @@ export class VideoPlayer {
 
     // Use HLS.js for browsers that don't support HLS natively
     if (window.Hls && window.Hls.isSupported()) {
-      this.hls = new window.Hls();
+      // Create HLS instance with better configuration for Node.js compatibility
+      this.hls = new window.Hls({
+        enableWorker: false, // Disable worker for better compatibility
+        lowLatencyMode: false,
+        backBufferLength: 30,
+        maxBufferLength: 60,
+        maxMaxBufferLength: 120,
+        // Add CORS headers for better compatibility
+        xhrSetup: function(xhr: XMLHttpRequest, url: string) {
+          xhr.setRequestHeader('Access-Control-Allow-Origin', '*');
+          xhr.setRequestHeader('Access-Control-Allow-Headers', '*');
+        }
+      });
       
       this.hls.on(window.Hls.Events.ERROR, (event: any, data: any) => {
         console.error('HLS error:', data);
@@ -69,11 +81,17 @@ export class VideoPlayer {
         }
       });
 
+      // Add manifest loaded event
+      this.hls.on(window.Hls.Events.MANIFEST_LOADED, () => {
+        console.log('HLS manifest loaded successfully');
+      });
+
       this.hls.attachMedia(videoElement);
       this.hls.loadSource(streamUrl);
     } else {
-      // Fallback for direct stream URLs
-      videoElement.src = streamUrl;
+      // Fallback for direct stream URLs - try with CORS proxy
+      const proxyUrl = `/api/proxy/stream?url=${encodeURIComponent(streamUrl)}`;
+      videoElement.src = proxyUrl;
     }
   }
 

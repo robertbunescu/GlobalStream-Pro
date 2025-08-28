@@ -27,22 +27,69 @@ export function VideoPlayer({ channel, onClose }: VideoPlayerProps) {
         setIsLoading(true);
         setError(null);
         
-        playerRef.current = new HLSVideoPlayer();
-        await playerRef.current.loadStream(videoRef.current!, channel.url);
-        
-        // Add event listeners
+        // First try direct stream
         if (videoRef.current) {
-          videoRef.current.addEventListener('loadstart', () => setIsLoading(true));
-          videoRef.current.addEventListener('loadeddata', () => setIsLoading(false));
-          videoRef.current.addEventListener('error', () => {
-            setError('Failed to load stream');
+          // Check if it's a direct video URL
+          const isDirect = channel.url.includes('.mp4') || channel.url.includes('.webm') || 
+                          channel.url.includes('.mkv') || channel.url.includes('.avi');
+          
+          if (isDirect) {
+            // Direct video file
+            videoRef.current.src = channel.url;
+          } else if (channel.url.includes('.m3u8')) {
+            // HLS stream - try both direct and through proxy
+            try {
+              playerRef.current = new HLSVideoPlayer();
+              await playerRef.current.loadStream(videoRef.current, channel.url);
+            } catch (hlsError) {
+              console.log('HLS direct failed, trying proxy...', hlsError);
+              // Fallback to proxy stream
+              const proxyUrl = `/api/proxy/stream?url=${encodeURIComponent(channel.url)}`;
+              videoRef.current.src = proxyUrl;
+            }
+          } else {
+            // Try proxy for other formats
+            const proxyUrl = `/api/proxy/stream?url=${encodeURIComponent(channel.url)}`;
+            videoRef.current.src = proxyUrl;
+          }
+          
+          // Add event listeners with better error handling
+          const handleLoadStart = () => setIsLoading(true);
+          const handleLoadedData = () => {
             setIsLoading(false);
-          });
+            setError(null);
+          };
+          const handleError = async (e: Event) => {
+            console.error('Video error:', e);
+            // Try fallback through proxy if direct failed
+            if (videoRef.current && !videoRef.current.src.includes('/api/proxy/stream')) {
+              console.log('Trying proxy fallback...');
+              const proxyUrl = `/api/proxy/stream?url=${encodeURIComponent(channel.url)}`;
+              videoRef.current.src = proxyUrl;
+            } else {
+              setError('Stream format not compatible');
+              setIsLoading(false);
+            }
+          };
+          
+          videoRef.current.addEventListener('loadstart', handleLoadStart);
+          videoRef.current.addEventListener('loadeddata', handleLoadedData);
+          videoRef.current.addEventListener('error', handleError);
+          videoRef.current.addEventListener('canplay', () => setIsLoading(false));
+          
+          // Clean up listeners
+          return () => {
+            if (videoRef.current) {
+              videoRef.current.removeEventListener('loadstart', handleLoadStart);
+              videoRef.current.removeEventListener('loadeddata', handleLoadedData);
+              videoRef.current.removeEventListener('error', handleError);
+            }
+          };
         }
         
       } catch (err) {
         console.error('Error loading stream:', err);
-        setError('Stream not available');
+        setError('Stream not available - format may not be supported');
         setIsLoading(false);
       }
     };

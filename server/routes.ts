@@ -95,7 +95,15 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
-  // Proxy endpoint for streaming (to handle CORS)
+  // Handle preflight requests for streaming proxy
+  app.options("/api/proxy/stream", (req, res) => {
+    res.setHeader('Access-Control-Allow-Origin', '*');
+    res.setHeader('Access-Control-Allow-Headers', '*');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS');
+    res.status(200).end();
+  });
+
+  // Proxy endpoint for streaming (to handle CORS and compatibility)
   app.get("/api/proxy/stream", async (req, res) => {
     try {
       const { url } = req.query;
@@ -103,37 +111,77 @@ export async function registerRoutes(app: Express): Promise<Server> {
         return res.status(400).json({ error: "Stream URL is required" });
       }
 
-      // Set appropriate headers for streaming
+      console.log('Proxying stream:', url);
+
+      // Set appropriate headers for streaming and CORS
       res.setHeader('Access-Control-Allow-Origin', '*');
       res.setHeader('Access-Control-Allow-Headers', '*');
+      res.setHeader('Access-Control-Allow-Methods', 'GET, HEAD, OPTIONS');
       
-      const response = await fetch(url);
+      // Determine content type from URL
+      if (url.includes('.m3u8')) {
+        res.setHeader('Content-Type', 'application/vnd.apple.mpegurl');
+      } else if (url.includes('.ts')) {
+        res.setHeader('Content-Type', 'video/mp2t');
+      } else if (url.includes('.mp4')) {
+        res.setHeader('Content-Type', 'video/mp4');
+      } else {
+        res.setHeader('Content-Type', 'video/mp4');
+      }
+      
+      // Add headers for better streaming
+      res.setHeader('Cache-Control', 'no-cache');
+      res.setHeader('Connection', 'keep-alive');
+      
+      const response = await fetch(url, {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36',
+          'Accept': '*/*',
+          'Accept-Encoding': 'identity',
+          'Range': req.headers.range || 'bytes=0-'
+        }
+      });
+      
       if (!response.ok) {
-        return res.status(response.status).json({ error: "Stream not available" });
+        console.error('Stream fetch failed:', response.status, response.statusText);
+        return res.status(response.status).json({ error: `Stream not available: ${response.status}` });
       }
 
-      // Pipe the stream
+      // Copy headers from source
+      if (response.headers.get('content-length')) {
+        res.setHeader('Content-Length', response.headers.get('content-length')!);
+      }
+      if (response.headers.get('content-range')) {
+        res.setHeader('Content-Range', response.headers.get('content-range')!);
+      }
+
+      // Handle streaming data
       if (response.body) {
         const reader = response.body.getReader();
-        const stream = new ReadableStream({
-          start(controller) {
-            function pump(): any {
-              return reader.read().then(({ done, value }) => {
-                if (done) {
-                  controller.close();
-                  return;
-                }
-                controller.enqueue(value);
-                return pump();
-              });
-            }
-            return pump();
-          }
-        });
         
-        const nodeStream = Readable.fromWeb(stream as any);
-        nodeStream.pipe(res);
+        const pump = async () => {
+          try {
+            while (true) {
+              const { done, value } = await reader.read();
+              if (done) break;
+              
+              if (!res.write(value)) {
+                // Wait for drain event if write buffer is full
+                await new Promise(resolve => res.once('drain', resolve));
+              }
+            }
+            res.end();
+          } catch (error) {
+            console.error('Stream pumping error:', error);
+            res.end();
+          }
+        };
+
+        pump();
+      } else {
+        res.status(500).json({ error: "No stream body available" });
       }
+      
     } catch (error) {
       console.error('Stream proxy error:', error);
       res.status(500).json({ error: "Stream proxy failed" });
