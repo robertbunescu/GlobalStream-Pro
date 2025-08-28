@@ -177,7 +177,9 @@ export class MemStorage implements IStorage {
     const channelArray = Array.from(this.channels.values());
     for (const channel of channelArray) {
       if (channel.group) {
-        categories.add(channel.group);
+        // Clean up category names - split on semicolons and take individual categories
+        const cleanCategories = channel.group.split(';').map(cat => cat.trim()).filter(cat => cat);
+        cleanCategories.forEach(cat => categories.add(cat));
       }
     }
     return Array.from(categories).sort();
