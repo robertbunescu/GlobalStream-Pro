@@ -69,9 +69,11 @@ export function Sidebar({
   };
 
   const getCountryFlag = (country: string): string => {
+    // Handle both country codes and full names
     const flagMap: Record<string, string> = {
+      // Full country names
       'United States': '🇺🇸',
-      'United Kingdom': '🇬🇧',
+      'United Kingdom': '🇬🇧', 
       'Canada': '🇨🇦',
       'Germany': '🇩🇪',
       'France': '🇫🇷',
@@ -117,6 +119,31 @@ export function Sidebar({
       'United Arab Emirates': '🇦🇪',
       'Saudi Arabia': '🇸🇦',
       'Qatar': '🇶🇦',
+      
+      // Country codes (ISO 2-letter)
+      'AF': '🇦🇫', 'AL': '🇦🇱', 'AM': '🇦🇲', 'AO': '🇦🇴', 'AW': '🇦🇼', 'AZ': '🇦🇿',
+      'BA': '🇧🇦', 'BB': '🇧🇧', 'BD': '🇧🇩', 'BF': '🇧🇫', 'BH': '🇧🇭', 'BJ': '🇧🇯', 
+      'BN': '🇧🇳', 'BO': '🇧🇴', 'BQ': '🇧🇶', 'BS': '🇧🇸', 'BY': '🇧🇾',
+      'CD': '🇨🇩', 'CG': '🇨🇬', 'CI': '🇨🇮', 'CM': '🇨🇲', 'CR': '🇨🇷', 'CU': '🇨🇺', 
+      'CV': '🇨🇻', 'CW': '🇨🇼', 'CY': '🇨🇾', 'DO': '🇩🇴', 'DZ': '🇩🇿',
+      'EC': '🇪🇨', 'EE': '🇪🇪', 'EH': '🇪🇭', 'ET': '🇪🇹', 'FO': '🇫🇴',
+      'GA': '🇬🇦', 'GE': '🇬🇪', 'GH': '🇬🇭', 'GM': '🇬🇲', 'GN': '🇬🇳', 'GP': '🇬🇵', 
+      'GQ': '🇬🇶', 'GT': '🇬🇹', 'GU': '🇬🇺', 'GY': '🇬🇾',
+      'HK': '🇭🇰', 'HN': '🇭🇳', 'HR': '🇭🇷', 'HT': '🇭🇹',
+      'ID': '🇮🇩', 'IE': '🇮🇪', 'IQ': '🇮🇶', 'IR': '🇮🇷', 'IS': '🇮🇸',
+      'JM': '🇯🇲', 'JO': '🇯🇴', 'KG': '🇰🇬', 'KH': '🇰🇭', 'KN': '🇰🇳', 'KP': '🇰🇵', 
+      'KW': '🇰🇼', 'KZ': '🇰🇿', 'LA': '🇱🇦', 'LB': '🇱🇧', 'LC': '🇱🇨', 'LK': '🇱🇰', 
+      'LT': '🇱🇹', 'LU': '🇱🇺', 'LV': '🇱🇻', 'LY': '🇱🇾',
+      'MC': '🇲🇨', 'MD': '🇲🇩', 'ME': '🇲🇪', 'MK': '🇲🇰', 'ML': '🇲🇱', 'MM': '🇲🇲', 
+      'MN': '🇲🇳', 'MO': '🇲🇴', 'MQ': '🇲🇶', 'MR': '🇲🇷', 'MT': '🇲🇹', 'MV': '🇲🇻', 
+      'MY': '🇲🇾', 'MZ': '🇲🇿', 'NA': '🇳🇦', 'NE': '🇳🇪', 'NI': '🇳🇮', 'NP': '🇳🇵',
+      'OM': '🇴🇲', 'PA': '🇵🇦', 'PF': '🇵🇫', 'PG': '🇵🇬', 'PH': '🇵🇭', 'PK': '🇵🇰', 
+      'PR': '🇵🇷', 'PS': '🇵🇸', 'PT': '🇵🇹', 'PY': '🇵🇾',
+      'RS': '🇷🇸', 'RW': '🇷🇼', 'SD': '🇸🇩', 'SG': '🇸🇬', 'SI': '🇸🇮', 'SM': '🇸🇲', 
+      'SN': '🇸🇳', 'SO': '🇸🇴', 'SR': '🇸🇷', 'SV': '🇸🇻', 'SX': '🇸🇽', 'SY': '🇸🇾',
+      'TD': '🇹🇩', 'TG': '🇹🇬', 'TH': '🇹🇭', 'TJ': '🇹🇯', 'TM': '🇹🇲', 'TN': '🇹🇳', 
+      'TT': '🇹🇹', 'TW': '🇹🇼', 'TZ': '🇹🇿', 'UG': '🇺🇬', 'UK': '🇬🇧', 'UY': '🇺🇾', 
+      'UZ': '🇺🇿', 'VG': '🇻🇬', 'VN': '🇻🇳', 'WS': '🇼🇸', 'XK': '🇽🇰', 'YE': '🇾🇪'
     };
     return flagMap[country] || '🏳️';
   };
