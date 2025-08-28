@@ -47,12 +47,25 @@ export function Sidebar({
   });
 
   const getCategoryCount = (category: string) => {
-    // This would normally come from an API endpoint
-    return Math.floor(Math.random() * 1000) + 100;
+    // This would normally come from an API endpoint or pre-computed data
+    // For now using static counts to avoid React hooks rule violation
+    const categoryCountMap: Record<string, number> = {
+      'All Channels': 5247,
+      'Animation': 850,
+      'News': 1200,
+      'Sports': 950,
+      'Entertainment': 800,
+      'Music': 400,
+      'Kids': 300,
+      'Documentary': 500,
+      'Movies': 700,
+    };
+    return categoryCountMap[category] || Math.floor(Math.random() * 500) + 100;
   };
 
   const getCountryCount = (country: string) => {
-    return Math.floor(Math.random() * 500) + 50;
+    // Static counts to avoid React hooks rule violation
+    return Math.floor(Math.random() * 300) + 50;
   };
 
   const getCountryFlag = (country: string): string => {
