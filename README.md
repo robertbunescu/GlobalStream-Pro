@@ -1,143 +1,144 @@
-# 📺 GlobalTV - Streaming TV din întreaga lume
+
+# 📺 GlobalTV - Worldwide Streaming TV
 
 ![GitHub Banner](./attached_assets/generated_images/GitHub_repository_banner_c46794c1.png)
 
 ![GlobalTV Hero](./attached_assets/generated_images/GlobalTV_hero_banner_mockup_71b62d77.png)
 
-O aplicație modernă de streaming TV care îți permite să vizionezi canale live din întreaga lume, cu o interfață similară Netflix și funcționalități avansate.
+A modern TV streaming app that lets you watch live channels from all over the world, with a Netflix-like interface and advanced features.
 
-## ✨ Caracteristici
+## ✨ Features
 
-- 🌍 **Peste 10.000 de canale TV** din întreaga lume
-- 🔍 **Căutare și filtrare** după țară, categorie și nume
-- 📱 **Design responsiv** - funcționează perfect pe mobile și desktop
-- 🎬 **Video player avansat** cu suport HLS.js pentru streaming adaptiv
-- ❤️ **Sistem de favorite** pentru canalele preferate
-- 🏴 **Steaguri de țări** și organizare pe categorii
-- 🌙 **Temă întunecată modernă** cu accente purple și albastru
+- 🌍 **10,000+ TV channels** worldwide
+- 🔍 **Search & filter** by country, category, and name
+- 📱 **Responsive design** - works perfectly on mobile and desktop
+- 🎬 **Advanced video player** with HLS.js adaptive streaming
+- ❤️ **Favorites system** for your preferred channels
+- 🏴 **Country flags** and category organization
+- 🌙 **Modern dark theme** with purple and blue accents
 
-## 🖼️ Preview-uri
+## 🖼️ Previews
 
-### Interface Desktop Principal
+### Main Desktop Interface
 ![Desktop Interface](./attached_assets/generated_images/Real_GlobalTV_application_interface_6a58eedb.png)
 
-### Interface Mobile Responsivă
+### Responsive Mobile Interface
 ![Mobile Interface](./attached_assets/generated_images/Mobile_GlobalTV_interface_screenshot_7c64e522.png)
 
-### Video Player Integrat
+### Integrated Video Player
 ![Video Player](./attached_assets/generated_images/GlobalTV_video_player_interface_3bed55a0.png)
 
-## 🚀 Tehnologii folosite
+## 🚀 Technologies Used
 
 ### Frontend
-- **React 18** cu TypeScript
-- **Tailwind CSS** pentru styling
-- **Shadcn/UI** pentru componente
-- **TanStack Query** pentru state management
-- **HLS.js** pentru streaming video
-- **Wouter** pentru routing
+- **React 18** with TypeScript
+- **Tailwind CSS** for styling
+- **Shadcn/UI** for components
+- **TanStack Query** for state management
+- **HLS.js** for video streaming
+- **Wouter** for routing
 
 ### Backend
-- **Node.js** cu Express
-- **TypeScript** 
-- **Drizzle ORM** cu PostgreSQL
-- **Zod** pentru validare
+- **Node.js** with Express
+- **TypeScript**
+- **Drizzle ORM** with PostgreSQL
+- **Zod** for validation
 
 ### Streaming
-- **IPTV-ORG** - Surse de canale gratuite
-- **TVMaze API** - Metadata pentru canale
-- **HLS.js** - Streaming adaptiv
+- **IPTV-ORG** - Free channel sources
+- **TVMaze API** - Channel metadata
+- **HLS.js** - Adaptive streaming
 
-## 📋 Instalare și rulare
+## 📋 Installation & Usage
 
-### Cerințe preliminare
+### Prerequisites
 - Node.js 20+
-- npm sau pnpm
+- npm or pnpm
 
-### Pași de instalare
+### Setup Steps
 
-1. **Clonează repository-ul**
+1. **Clone the repository**
 ```bash
 git clone https://github.com/your-username/globaltv.git
 cd globaltv
 ```
 
-2. **Instalează dependințele**
+2. **Install dependencies**
 ```bash
 npm install
 ```
 
-3. **Pornește aplicația**
+3. **Start the app**
 ```bash
 npm run dev
 ```
 
-4. **Deschide în browser**
-Accesează `http://localhost:5000` în browserul tău.
+4. **Open in browser**
+Go to `http://localhost:5000` in your browser.
 
-## 🎯 Cum să folosești
+## 🎯 How to Use
 
-1. **Explorează canalele** - Navighează prin grilă sau folosește sidebar-ul
-2. **Filtrează după țară** - Selectează țara dorită din sidebar
-3. **Caută canale** - Folosește bara de căutare din header
-4. **Vizionează live** - Dă click pe orice canal pentru a începe streaming-ul
-5. **Adaugă la favorite** - Apasă butonul inimă pentru a salva canalele preferate
+1. **Browse channels** - Navigate the grid or use the sidebar
+2. **Filter by country** - Select your country from the sidebar
+3. **Search channels** - Use the search bar in the header
+4. **Watch live** - Click any channel to start streaming
+5. **Add to favorites** - Click the heart button to save favorite channels
 
-## 🛠️ Structura proiectului
+## 🛠️ Project Structure
 
 ```
-├── client/              # Frontend React
+├── client/              # React frontend
 │   ├── src/
-│   │   ├── components/  # Componente UI
-│   │   ├── pages/       # Pagini aplicație
-│   │   ├── lib/         # Utilitare și configurări
+│   │   ├── components/  # UI components
+│   │   ├── pages/       # App pages
+│   │   ├── lib/         # Utilities and config
 │   │   └── hooks/       # Custom React hooks
-├── server/              # Backend Express
-│   ├── services/        # Servicii pentru IPTV și TVMaze
+├── server/              # Express backend
+│   ├── services/        # IPTV & TVMaze services
 │   └── routes.ts        # API endpoints
-├── shared/              # Tipuri partajate
-└── attached_assets/     # Imagini și assets
+├── shared/              # Shared types
+└── attached_assets/     # Images and assets
 ```
 
 ## 🔧 API Endpoints
 
-- `GET /api/channels` - Lista toate canalele cu filtrare
-- `GET /api/countries` - Lista țărilor disponibile
-- `GET /api/categories` - Lista categoriilor
-- `POST /api/channels/load-iptv` - Încarcă canale din IPTV
-- `GET /api/proxy/stream` - Proxy pentru streaming CORS
+- `GET /api/channels` - List all channels with filtering
+- `GET /api/countries` - List available countries
+- `GET /api/categories` - List categories
+- `POST /api/channels/load-iptv` - Load channels from IPTV
+- `GET /api/proxy/stream` - Proxy for CORS streaming
 
-## 🎨 Design și UX
+## 🎨 Design & UX
 
-Aplicația folosește o paletă de culori moderne cu temă întunecată:
-- **Background**: Gri foarte întunecat pentru confort vizual
-- **Primary**: Purple vibrant (#a855f7) pentru accente
-- **Secondary**: Albastru pentru elemente secundare
-- **Cards**: Tonuri mai deschise de gri pentru contrast
+The app uses a modern dark color palette:
+- **Background**: Very dark gray for eye comfort
+- **Primary**: Vibrant purple (#a855f7) for accents
+- **Secondary**: Blue for secondary elements
+- **Cards**: Lighter gray tones for contrast
 
-## ⚖️ Aspecte legale
+## ⚖️ Legal
 
-Aplicația folosește doar:
-- ✅ Canale TV publice și gratuite
-- ✅ API-uri open source (IPTV-ORG, TVMaze)
-- ✅ Surse de streaming legale și publice
+This app only uses:
+- ✅ Public and free TV channels
+- ✅ Open source APIs (IPTV-ORG, TVMaze)
+- ✅ Legal and public streaming sources
 
-**Notă**: Utilizatorii sunt responsabili să respecte legile locale privind vizionarea conținutului TV.
+**Note**: Users are responsible for complying with local laws regarding TV content viewing.
 
-## 🤝 Contribuții
+## 🤝 Contributions
 
-Contribuțiile sunt binevenite! Te rog să:
-1. Fork repository-ul
-2. Creează o branză pentru feature-ul tău
-3. Commit modificările
-4. Push la branză
-5. Deschide un Pull Request
+Contributions are welcome! Please:
+1. Fork the repository
+2. Create a branch for your feature
+3. Commit your changes
+4. Push the branch
+5. Open a Pull Request
 
-## 🎨 Asset-uri generate
+## 🎨 Generated Assets
 
-Toate imaginile și mockup-urile din acest proiect au fost create special pentru aplicație:
+All images and mockups in this project were created specifically for the app:
 
-- **Logo GlobalTV**: `./attached_assets/generated_images/GlobalTV_logo_design_a60d0fe4.png`
+- **GlobalTV Logo**: `./attached_assets/generated_images/GlobalTV_logo_design_a60d0fe4.png`
 - **Hero Banner**: `./attached_assets/generated_images/GlobalTV_hero_banner_mockup_71b62d77.png`
 - **Desktop Screenshot**: `./attached_assets/generated_images/Desktop_interface_screenshot_de552309.png`
 - **Mobile Interface**: `./attached_assets/generated_images/Mobile_app_interface_mockup_27a48446.png`
@@ -145,45 +146,45 @@ Toate imaginile și mockup-urile din acest proiect au fost create special pentru
 - **Figma Mockup**: `./attached_assets/generated_images/Figma_design_mockup_b2c6534a.png`
 - **GitHub Banner**: `./attached_assets/generated_images/GitHub_repository_banner_c46794c1.png`
 
-## 🔧 Dezvoltare
+## 🔧 Development
 
-### Rulare în modul dezvoltare
+### Run in development mode
 ```bash
 npm run dev
 ```
-Acest command pornește serverul Express pe portul 5000 și Vite dev server-ul pentru frontend.
+This command starts the Express server on port 5000 and the Vite dev server for the frontend.
 
-### Build pentru producție
+### Build for production
 ```bash
 npm run build
 ```
 
-### Variabile de mediu
+### Environment variables
 ```env
 NODE_ENV=development
 DATABASE_URL=your_postgres_url
 ```
 
-## 🎯 Planuri viitoare
+## 🎯 Future Plans
 
-- [ ] Sistem de autentificare utilizatori
-- [ ] Ghid EPG (Electronic Program Guide)
-- [ ] Înregistrare de programe
-- [ ] Chat live pentru canale
-- [ ] Recomandări personalizate
-- [ ] Aplicație mobile nativă
+- [ ] User authentication system
+- [ ] EPG (Electronic Program Guide)
+- [ ] Program recording
+- [ ] Live chat for channels
+- [ ] Personalized recommendations
+- [ ] Native mobile app
 
-## 📊 Statistici
+## 📊 Stats
 
-- **10.000+** canale TV din întreaga lume
-- **150+** țări reprezentate
-- **20+** categorii de conținut
-- **Gratuit și open source**
+- **10,000+** TV channels worldwide
+- **150+** countries represented
+- **20+** content categories
+- **Free and open source**
 
 ## 📧 Contact
 
-Pentru întrebări sau suport, deschide un issue pe GitHub.
+For questions or support, open an issue on GitHub.
 
 ---
 
-**Dezvoltat cu ❤️ pentru comunitatea de streaming TV din România și din întreaga lume**
+**Developed with ❤️ for the global TV streaming community**
