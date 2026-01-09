@@ -1,0 +1,146 @@
+<!-- Sidebar Component -->
+<aside
+  class="w-64 bg-card border-r border-border h-screen sticky top-16 transition-transform duration-300"
+  id="sidebar"
+>
+  <div class="p-6">
+    <div class="space-y-6">
+      <!-- Categories -->
+      <div>
+        <h3
+          class="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-3"
+        >
+          Categories
+        </h3>
+        <div class="space-y-2">
+          <a
+            href="#"
+            class="flex items-center space-x-3 p-2 rounded-lg hover:bg-muted transition-colors text-primary bg-muted/50"
+          >
+            <i class="fas fa-home w-4"></i>
+            <span class="text-sm font-medium">All Channels</span>
+            <span
+              class="ml-auto text-xs bg-primary/20 text-primary px-2 py-1 rounded-full"
+              data-bind="channels.total"
+              >5,247</span
+            >
+          </a>
+          <a
+            href="#"
+            class="flex items-center space-x-3 p-2 rounded-lg hover:bg-muted transition-colors text-foreground"
+          >
+            <i class="fas fa-newspaper w-4"></i>
+            <span class="text-sm">News</span>
+            <span
+              class="ml-auto text-xs text-muted-foreground"
+              data-bind="categories.news.count"
+              >847</span
+            >
+          </a>
+          <a
+            href="#"
+            class="flex items-center space-x-3 p-2 rounded-lg hover:bg-muted transition-colors text-foreground"
+          >
+            <i class="fas fa-football-ball w-4"></i>
+            <span class="text-sm">Sports</span>
+            <span
+              class="ml-auto text-xs text-muted-foreground"
+              data-bind="categories.sports.count"
+              >423</span
+            >
+          </a>
+          <a
+            href="#"
+            class="flex items-center space-x-3 p-2 rounded-lg hover:bg-muted transition-colors text-foreground"
+          >
+            <i class="fas fa-film w-4"></i>
+            <span class="text-sm">Movies</span>
+            <span
+              class="ml-auto text-xs text-muted-foreground"
+              data-bind="categories.movies.count"
+              >1,234</span
+            >
+          </a>
+          <a
+            href="#"
+            class="flex items-center space-x-3 p-2 rounded-lg hover:bg-muted transition-colors text-foreground"
+          >
+            <i class="fas fa-music w-4"></i>
+            <span class="text-sm">Music</span>
+            <span
+              class="ml-auto text-xs text-muted-foreground"
+              data-bind="categories.music.count"
+              >567</span
+            >
+          </a>
+          <a
+            href="#"
+            class="flex items-center space-x-3 p-2 rounded-lg hover:bg-muted transition-colors text-foreground"
+          >
+            <i class="fas fa-child w-4"></i>
+            <span class="text-sm">Kids</span>
+            <span
+              class="ml-auto text-xs text-muted-foreground"
+              data-bind="categories.kids.count"
+              >298</span
+            >
+          </a>
+        </div>
+      </div>
+
+      <!-- Regions -->
+      <div>
+        <h3
+          class="text-sm font-semibold text-muted-foreground uppercase tracking-wide mb-3"
+        >
+          Regions
+        </h3>
+        <div class="space-y-2">
+          <a
+            href="#"
+            class="flex items-center space-x-3 p-2 rounded-lg hover:bg-muted transition-colors text-foreground"
+          >
+            <span class="text-sm">🇺🇸</span>
+            <span class="text-sm">United States</span>
+            <span class="ml-auto text-xs text-muted-foreground">1,247</span>
+          </a>
+          <a
+            href="#"
+            class="flex items-center space-x-3 p-2 rounded-lg hover:bg-muted transition-colors text-foreground"
+          >
+            <span class="text-sm">🇬🇧</span>
+            <span class="text-sm">United Kingdom</span>
+            <span class="ml-auto text-xs text-muted-foreground">534</span>
+          </a>
+          <a
+            href="#"
+            class="flex items-center space-x-3 p-2 rounded-lg hover:bg-muted transition-colors text-foreground"
+          >
+            <span class="text-sm">🇨🇦</span>
+            <span class="text-sm">Canada</span>
+            <span class="ml-auto text-xs text-muted-foreground">387</span>
+          </a>
+          <a
+            href="#"
+            class="flex items-center space-x-3 p-2 rounded-lg hover:bg-muted transition-colors text-foreground"
+          >
+            <span class="text-sm">🇩🇪</span>
+            <span class="text-sm">Germany</span>
+            <span class="ml-auto text-xs text-muted-foreground">423</span>
+          </a>
+          <a
+            href="#"
+            class="flex items-center space-x-3 p-2 rounded-lg hover:bg-muted transition-colors text-foreground"
+          >
+            <span class="text-sm">🇫🇷</span>
+            <span class="text-sm">France</span>
+            <span class="ml-auto text-xs text-muted-foreground">312</span>
+          </a>
+          <button class="text-sm text-primary hover:text-primary/80 mt-2">
+            View All Regions
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</aside>

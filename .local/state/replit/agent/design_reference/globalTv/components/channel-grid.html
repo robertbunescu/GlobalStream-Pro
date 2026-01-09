@@ -1,0 +1,363 @@
+<!-- Channel Grid Component -->
+<div
+  class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5 gap-6"
+  id="channelGrid"
+>
+  <!-- CNN International -->
+  <div
+    class="channel-card bg-card rounded-xl border border-border overflow-hidden shadow-sm cursor-pointer"
+    onclick="playChannel('cnn-international')"
+  >
+    <div class="relative aspect-video bg-muted">
+      <div
+        class="w-full h-full bg-gradient-to-br from-red-600 to-red-800 flex items-center justify-center"
+      >
+        <div class="text-white font-bold text-2xl tracking-wider">CNN</div>
+      </div>
+      <div class="absolute top-2 left-2 flex items-center space-x-2">
+        <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+        <span class="text-xs text-white/90 bg-black/50 px-2 py-1 rounded"
+          >LIVE</span
+        >
+      </div>
+      <div class="absolute top-2 right-2">
+        <span class="text-lg">🇺🇸</span>
+      </div>
+      <button
+        class="absolute bottom-2 right-2 w-8 h-8 bg-black/50 rounded-full flex items-center justify-center text-white hover:bg-primary transition-colors"
+      >
+        <i class="fas fa-heart text-sm"></i>
+      </button>
+    </div>
+    <div class="p-4">
+      <h3 class="font-semibold text-sm mb-1">CNN International</h3>
+      <p class="text-xs text-muted-foreground mb-2">
+        Breaking news and global coverage
+      </p>
+      <div class="flex items-center justify-between">
+        <span class="px-2 py-1 bg-red-500/20 text-red-400 text-xs rounded-full"
+          >News</span
+        >
+        <span class="text-xs text-muted-foreground">1.2M viewers</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- BBC World News -->
+  <div
+    class="channel-card bg-card rounded-xl border border-border overflow-hidden shadow-sm cursor-pointer"
+    onclick="playChannel('bbc-world')"
+  >
+    <div class="relative aspect-video bg-muted">
+      <div
+        class="w-full h-full bg-gradient-to-br from-purple-700 to-purple-900 flex items-center justify-center"
+      >
+        <div class="text-white font-bold text-xl tracking-wider">BBC</div>
+      </div>
+      <div class="absolute top-2 left-2 flex items-center space-x-2">
+        <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+        <span class="text-xs text-white/90 bg-black/50 px-2 py-1 rounded"
+          >LIVE</span
+        >
+      </div>
+      <div class="absolute top-2 right-2">
+        <span class="text-lg">🇬🇧</span>
+      </div>
+      <button
+        class="absolute bottom-2 right-2 w-8 h-8 bg-black/50 rounded-full flex items-center justify-center text-white hover:bg-primary transition-colors"
+      >
+        <i class="fas fa-heart text-sm"></i>
+      </button>
+    </div>
+    <div class="p-4">
+      <h3 class="font-semibold text-sm mb-1">BBC World News</h3>
+      <p class="text-xs text-muted-foreground mb-2">
+        International news and analysis
+      </p>
+      <div class="flex items-center justify-between">
+        <span
+          class="px-2 py-1 bg-blue-500/20 text-blue-400 text-xs rounded-full"
+          >News</span
+        >
+        <span class="text-xs text-muted-foreground">956K viewers</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ESPN Sports -->
+  <div
+    class="channel-card bg-card rounded-xl border border-border overflow-hidden shadow-sm cursor-pointer"
+    onclick="playChannel('espn-sports')"
+  >
+    <div class="relative aspect-video bg-muted">
+      <div
+        class="w-full h-full bg-gradient-to-br from-red-700 to-red-900 flex items-center justify-center"
+      >
+        <div class="text-white font-bold text-xl">ESPN</div>
+      </div>
+      <div class="absolute top-2 left-2 flex items-center space-x-2">
+        <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+        <span class="text-xs text-white/90 bg-black/50 px-2 py-1 rounded"
+          >LIVE</span
+        >
+      </div>
+      <div class="absolute top-2 right-2">
+        <span class="text-lg">🇺🇸</span>
+      </div>
+      <button
+        class="absolute bottom-2 right-2 w-8 h-8 bg-black/50 rounded-full flex items-center justify-center text-white hover:bg-primary transition-colors"
+      >
+        <i class="fas fa-heart text-sm"></i>
+      </button>
+    </div>
+    <div class="p-4">
+      <h3 class="font-semibold text-sm mb-1">ESPN</h3>
+      <p class="text-xs text-muted-foreground mb-2">
+        Sports news and live events
+      </p>
+      <div class="flex items-center justify-between">
+        <span
+          class="px-2 py-1 bg-orange-500/20 text-orange-400 text-xs rounded-full"
+          >Sports</span
+        >
+        <span class="text-xs text-muted-foreground">2.1M viewers</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- National Geographic -->
+  <div
+    class="channel-card bg-card rounded-xl border border-border overflow-hidden shadow-sm cursor-pointer"
+    onclick="playChannel('nat-geo')"
+  >
+    <div class="relative aspect-video bg-muted">
+      <div
+        class="w-full h-full bg-gradient-to-br from-yellow-600 to-yellow-800 flex items-center justify-center"
+      >
+        <div class="text-white font-bold text-lg text-center">NAT<br />GEO</div>
+      </div>
+      <div class="absolute top-2 left-2 flex items-center space-x-2">
+        <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+        <span class="text-xs text-white/90 bg-black/50 px-2 py-1 rounded"
+          >LIVE</span
+        >
+      </div>
+      <div class="absolute top-2 right-2">
+        <span class="text-lg">🇺🇸</span>
+      </div>
+      <button
+        class="absolute bottom-2 right-2 w-8 h-8 bg-black/50 rounded-full flex items-center justify-center text-white hover:bg-primary transition-colors"
+      >
+        <i class="fas fa-heart text-sm"></i>
+      </button>
+    </div>
+    <div class="p-4">
+      <h3 class="font-semibold text-sm mb-1">National Geographic</h3>
+      <p class="text-xs text-muted-foreground mb-2">
+        Nature and science documentaries
+      </p>
+      <div class="flex items-center justify-between">
+        <span
+          class="px-2 py-1 bg-green-500/20 text-green-400 text-xs rounded-full"
+          >Documentary</span
+        >
+        <span class="text-xs text-muted-foreground">734K viewers</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- MTV Music -->
+  <div
+    class="channel-card bg-card rounded-xl border border-border overflow-hidden shadow-sm cursor-pointer"
+    onclick="playChannel('mtv')"
+  >
+    <div class="relative aspect-video bg-muted">
+      <div
+        class="w-full h-full bg-gradient-to-br from-pink-600 to-purple-700 flex items-center justify-center"
+      >
+        <div class="text-white font-bold text-2xl">MTV</div>
+      </div>
+      <div class="absolute top-2 left-2 flex items-center space-x-2">
+        <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+        <span class="text-xs text-white/90 bg-black/50 px-2 py-1 rounded"
+          >LIVE</span
+        >
+      </div>
+      <div class="absolute top-2 right-2">
+        <span class="text-lg">🇺🇸</span>
+      </div>
+      <button
+        class="absolute bottom-2 right-2 w-8 h-8 bg-black/50 rounded-full flex items-center justify-center text-white hover:bg-primary transition-colors"
+      >
+        <i class="fas fa-heart text-sm"></i>
+      </button>
+    </div>
+    <div class="p-4">
+      <h3 class="font-semibold text-sm mb-1">MTV</h3>
+      <p class="text-xs text-muted-foreground mb-2">
+        Music videos and entertainment
+      </p>
+      <div class="flex items-center justify-between">
+        <span
+          class="px-2 py-1 bg-purple-500/20 text-purple-400 text-xs rounded-full"
+          >Music</span
+        >
+        <span class="text-xs text-muted-foreground">845K viewers</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Al Jazeera English -->
+  <div
+    class="channel-card bg-card rounded-xl border border-border overflow-hidden shadow-sm cursor-pointer"
+    onclick="playChannel('aljazeera')"
+  >
+    <div class="relative aspect-video bg-muted">
+      <div
+        class="w-full h-full bg-gradient-to-br from-orange-600 to-red-700 flex items-center justify-center"
+      >
+        <div class="text-white font-bold text-lg text-center">
+          AL<br />JAZEERA
+        </div>
+      </div>
+      <div class="absolute top-2 left-2 flex items-center space-x-2">
+        <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+        <span class="text-xs text-white/90 bg-black/50 px-2 py-1 rounded"
+          >LIVE</span
+        >
+      </div>
+      <div class="absolute top-2 right-2">
+        <span class="text-lg">🇶🇦</span>
+      </div>
+      <button
+        class="absolute bottom-2 right-2 w-8 h-8 bg-black/50 rounded-full flex items-center justify-center text-white hover:bg-primary transition-colors"
+      >
+        <i class="fas fa-heart text-sm"></i>
+      </button>
+    </div>
+    <div class="p-4">
+      <h3 class="font-semibold text-sm mb-1">Al Jazeera English</h3>
+      <p class="text-xs text-muted-foreground mb-2">
+        International news perspective
+      </p>
+      <div class="flex items-center justify-between">
+        <span
+          class="px-2 py-1 bg-orange-500/20 text-orange-400 text-xs rounded-full"
+          >News</span
+        >
+        <span class="text-xs text-muted-foreground">623K viewers</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- France 24 -->
+  <div
+    class="channel-card bg-card rounded-xl border border-border overflow-hidden shadow-sm cursor-pointer"
+    onclick="playChannel('france24')"
+  >
+    <div class="relative aspect-video bg-muted">
+      <div
+        class="w-full h-full bg-gradient-to-br from-blue-600 to-red-600 flex items-center justify-center"
+      >
+        <div class="text-white font-bold text-lg">FRANCE 24</div>
+      </div>
+      <div class="absolute top-2 left-2 flex items-center space-x-2">
+        <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+        <span class="text-xs text-white/90 bg-black/50 px-2 py-1 rounded"
+          >LIVE</span
+        >
+      </div>
+      <div class="absolute top-2 right-2">
+        <span class="text-lg">🇫🇷</span>
+      </div>
+      <button
+        class="absolute bottom-2 right-2 w-8 h-8 bg-black/50 rounded-full flex items-center justify-center text-white hover:bg-primary transition-colors"
+      >
+        <i class="fas fa-heart text-sm"></i>
+      </button>
+    </div>
+    <div class="p-4">
+      <h3 class="font-semibold text-sm mb-1">France 24</h3>
+      <p class="text-xs text-muted-foreground mb-2">
+        French international news
+      </p>
+      <div class="flex items-center justify-between">
+        <span
+          class="px-2 py-1 bg-blue-500/20 text-blue-400 text-xs rounded-full"
+          >News</span
+        >
+        <span class="text-xs text-muted-foreground">456K viewers</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Disney Channel -->
+  <div
+    class="channel-card bg-card rounded-xl border border-border overflow-hidden shadow-sm cursor-pointer"
+    onclick="playChannel('disney')"
+  >
+    <div class="relative aspect-video bg-muted">
+      <div
+        class="w-full h-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center"
+      >
+        <div class="text-white font-bold text-lg">DISNEY</div>
+      </div>
+      <div class="absolute top-2 left-2 flex items-center space-x-2">
+        <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+        <span class="text-xs text-white/90 bg-black/50 px-2 py-1 rounded"
+          >LIVE</span
+        >
+      </div>
+      <div class="absolute top-2 right-2">
+        <span class="text-lg">🇺🇸</span>
+      </div>
+      <button
+        class="absolute bottom-2 right-2 w-8 h-8 bg-black/50 rounded-full flex items-center justify-center text-white hover:bg-primary transition-colors"
+      >
+        <i class="fas fa-heart text-sm"></i>
+      </button>
+    </div>
+    <div class="p-4">
+      <h3 class="font-semibold text-sm mb-1">Disney Channel</h3>
+      <p class="text-xs text-muted-foreground mb-2">
+        Family entertainment and cartoons
+      </p>
+      <div class="flex items-center justify-between">
+        <span
+          class="px-2 py-1 bg-indigo-500/20 text-indigo-400 text-xs rounded-full"
+          >Kids</span
+        >
+        <span class="text-xs text-muted-foreground">1.5M viewers</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- Loading Skeleton Cards -->
+  <div
+    class="channel-card bg-card rounded-xl border border-border overflow-hidden shadow-sm"
+  >
+    <div class="aspect-video loading-skeleton"></div>
+    <div class="p-4 space-y-2">
+      <div class="h-4 loading-skeleton rounded"></div>
+      <div class="h-3 loading-skeleton rounded w-3/4"></div>
+      <div class="flex justify-between items-center">
+        <div class="h-6 loading-skeleton rounded w-16"></div>
+        <div class="h-3 loading-skeleton rounded w-20"></div>
+      </div>
+    </div>
+  </div>
+
+  <div
+    class="channel-card bg-card rounded-xl border border-border overflow-hidden shadow-sm"
+  >
+    <div class="aspect-video loading-skeleton"></div>
+    <div class="p-4 space-y-2">
+      <div class="h-4 loading-skeleton rounded"></div>
+      <div class="h-3 loading-skeleton rounded w-3/4"></div>
+      <div class="flex justify-between items-center">
+        <div class="h-6 loading-skeleton rounded w-16"></div>
+        <div class="h-3 loading-skeleton rounded w-20"></div>
+      </div>
+    </div>
+  </div>
+</div>

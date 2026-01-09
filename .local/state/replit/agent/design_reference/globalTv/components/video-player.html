@@ -1,0 +1,101 @@
+<!-- Video Player Component -->
+<div class="video-player-container mb-8 hidden" id="videoPlayer">
+  <div
+    class="bg-card rounded-xl border border-border overflow-hidden shadow-lg"
+  >
+    <div class="relative aspect-video bg-black">
+      <!-- Video Player Area -->
+      <div class="w-full h-full bg-black flex items-center justify-center">
+        <div class="text-center">
+          <div
+            class="w-16 h-16 mx-auto mb-4 bg-primary/20 rounded-full flex items-center justify-center"
+          >
+            <i class="fas fa-play text-primary text-xl"></i>
+          </div>
+          <h3
+            class="text-lg font-medium text-white"
+            data-bind="currentChannel.name"
+          >
+            CNN International
+          </h3>
+          <p
+            class="text-gray-400 text-sm"
+            data-bind="currentChannel.description"
+          >
+            Breaking news and global coverage
+          </p>
+        </div>
+      </div>
+
+      <!-- Video Controls Overlay -->
+      <div
+        class="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/80 to-transparent p-4"
+      >
+        <div class="flex items-center justify-between">
+          <div class="flex items-center space-x-4">
+            <button class="text-white hover:text-primary transition-colors">
+              <i class="fas fa-play text-xl"></i>
+            </button>
+            <button class="text-white hover:text-primary transition-colors">
+              <i class="fas fa-volume-up"></i>
+            </button>
+            <div class="flex items-center space-x-2">
+              <span class="text-white text-sm">Live</span>
+              <div class="w-2 h-2 bg-red-500 rounded-full animate-pulse"></div>
+            </div>
+          </div>
+          <div class="flex items-center space-x-3">
+            <button class="text-white hover:text-primary transition-colors">
+              <i class="fas fa-heart"></i>
+            </button>
+            <button class="text-white hover:text-primary transition-colors">
+              <i class="fas fa-expand"></i>
+            </button>
+            <button
+              class="text-white hover:text-primary transition-colors"
+              onclick="closePlayer()"
+            >
+              <i class="fas fa-times"></i>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Channel Info Bar -->
+    <div class="p-4 bg-card">
+      <div class="flex items-center justify-between">
+        <div class="flex items-center space-x-4">
+          <div
+            class="w-12 h-12 bg-muted rounded-lg flex items-center justify-center"
+          >
+            <span
+              class="text-lg font-bold"
+              data-bind="currentChannel.countryFlag"
+              >🇺🇸</span
+            >
+          </div>
+          <div>
+            <h4 class="font-semibold" data-bind="currentChannel.name">
+              CNN International
+            </h4>
+            <p
+              class="text-sm text-muted-foreground"
+              data-bind="currentChannel.category"
+            >
+              News • United States
+            </p>
+          </div>
+        </div>
+        <div class="flex items-center space-x-2">
+          <span
+            class="px-3 py-1 bg-green-500/20 text-green-400 text-xs rounded-full flex items-center"
+          >
+            <div class="w-1.5 h-1.5 bg-green-400 rounded-full mr-2"></div>
+            Online
+          </span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

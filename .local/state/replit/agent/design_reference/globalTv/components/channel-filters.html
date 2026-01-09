@@ -1,0 +1,54 @@
+<!-- Channel Filters Component -->
+<div class="flex items-center justify-between mb-6">
+  <div>
+    <h2 class="text-2xl font-bold mb-2">Live TV Channels</h2>
+    <p class="text-muted-foreground">
+      Watch live TV channels from around the world
+    </p>
+  </div>
+
+  <div class="flex items-center space-x-4">
+    <!-- Filter Dropdown -->
+    <div class="relative">
+      <select
+        class="bg-input border border-border rounded-lg px-4 py-2 text-sm focus:ring-2 focus:ring-primary focus:border-transparent"
+      >
+        <option>All Categories</option>
+        <option>News</option>
+        <option>Sports</option>
+        <option>Entertainment</option>
+        <option>Music</option>
+        <option>Kids</option>
+      </select>
+    </div>
+
+    <!-- Sort Options -->
+    <div class="flex items-center space-x-2 bg-muted rounded-lg p-1">
+      <button
+        class="px-3 py-1 text-sm rounded-md bg-primary text-primary-foreground"
+      >
+        Popular
+      </button>
+      <button
+        class="px-3 py-1 text-sm rounded-md text-muted-foreground hover:text-foreground"
+      >
+        A-Z
+      </button>
+      <button
+        class="px-3 py-1 text-sm rounded-md text-muted-foreground hover:text-foreground"
+      >
+        Country
+      </button>
+    </div>
+
+    <!-- View Toggle -->
+    <div class="flex items-center space-x-1 bg-muted rounded-lg p-1">
+      <button class="p-2 text-primary bg-primary/20 rounded">
+        <i class="fas fa-th-large text-sm"></i>
+      </button>
+      <button class="p-2 text-muted-foreground hover:text-foreground rounded">
+        <i class="fas fa-list text-sm"></i>
+      </button>
+    </div>
+  </div>
+</div>
