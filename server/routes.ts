@@ -4,7 +4,7 @@ import { Readable } from "stream";
 import { storage } from "./storage";
 import { IPTVService } from "./services/iptv";
 import { TVMazeService } from "./services/tvmaze";
-import { insertChannelSchema } from "@shared/schema";
+import { insertChannelSchema } from "../shared/schema";
 
 export async function registerRoutes(app: Express): Promise<Server> {
   // Get all channels with optional filtering
